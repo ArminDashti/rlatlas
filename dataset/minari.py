@@ -5,7 +5,6 @@ import numpy as np
 
 def download(dataset_id='D4RL/pen/expert-v2'):
     dataset = minari.load_dataset(dataset_id, True)
-    # return dataset
     observations, actions, rewards, terminations, truncations, next_observations = [], [], [], [], [], []
     for episode in dataset.iterate_episodes():
         episode_length = len(episode.observations)
@@ -15,7 +14,6 @@ def download(dataset_id='D4RL/pen/expert-v2'):
             rewards.append(episode.rewards[i]) 
             terminations.append(episode.terminations[i])
             truncations.append(episode.truncations[i])
-            # next_obs = episode.observations[i + 1] if i != 199 else np.zeros_like(episode.observations[i])
             next_obs = episode.observations[i + 1]
             next_observations.append(next_obs)
     
